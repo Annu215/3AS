@@ -17,6 +17,7 @@ public class Pizza1 {
     public static void main(String[] args) {
         System.out.println("Hello world");
         // TODO code application logic here
+        System.out.println("Trail of push and pull");
     }
     
 }
