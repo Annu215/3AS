@@ -34,7 +34,9 @@ class pizza
     double distance = 0;
     double deliveryfee = 0;
     DecimalFormat df = new DecimalFormat("#.##");
-   
+    int inches=0; // pizza size
+    double cost = 0.0; // pizza cost
+ 
     Scanner keyboard = new Scanner(System.in);
     
      void delivery_charge() 
@@ -72,7 +74,42 @@ class pizza
          System.out.println("Your delivery fee is: Rs " + df.format(deliveryfee));
          }
      }
-    
+
+    void pizza_details() 
+    {
+	  // Prompts for pizza size
+	     System.out.print("\nWhat size of pizza would you like (diameter in inches)? (10,   12, 14, or 16) " );
+	     if(keyboard.hasNextInt())
+	    	 inches = keyboard.nextInt();
+  
+	     if (inches == 10 )
+	     {
+	         cost = 150;
+	     }
+	     else if (inches == 12)
+	     {
+	         cost = 200;
+	     }
+	     else if (inches == 14)
+	     {
+	         cost = 300;
+	     }
+	     else if (inches == 16)
+	     {
+	         cost = 400;
+	     }
+	     else if (inches != 10 && inches != 12 && inches != 14 && inches != 16)
+	     {
+    	         System.out.println("\nThe number you have entered is illegal, your pizza size will be set to 12 inches. " );
+	         cost = 200;
+	     }
+	     keyboard.nextLine();
+}	
+
+             
+             
+  
+
     
     void order()
   {
@@ -84,6 +121,6 @@ class pizza
 
                 //Prompt for distance to calculate delivery charge
                 delivery_charge();
-			
+		pizza_details();	
     }
 }
