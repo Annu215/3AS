@@ -5,6 +5,8 @@
  */
 package pizza1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author LENOVO
@@ -14,11 +16,30 @@ public class Pizza1 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        System.out.println("Hello world");
-        int a,b;
-        // TODO code application logic here
-        System.out.println("Trail of push and pull");
+    public static void main(String[] args) 
+    {
+        pizza p1 = new pizza();
+    
+            p1.order();
+
     }
     
+}
+
+class pizza
+{
+    //Variables
+    String firstName; // first name of user
+    Scanner keyboard = new Scanner(System.in);
+    
+    void order()
+  {
+
+
+	  	// Prompts for name & determines discount
+	  	System.out.print("Enter your name: " );
+	  	firstName = keyboard.nextLine();
+
+    
+    }
 }
