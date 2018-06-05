@@ -7,7 +7,7 @@ package pizza1;
 
 /**
  *
- * @author Dell
+ * @author LENOVO
  */
 public class Pizza1 {
 
@@ -15,6 +15,7 @@ public class Pizza1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("Hello world");
         // TODO code application logic here
     }
     
