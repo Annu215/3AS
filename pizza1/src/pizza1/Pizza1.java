@@ -12,6 +12,8 @@ import java.util.Scanner;
  *
  * @author LENOVO
  */
+
+/*Java Class*/
 public class Pizza1 {
 
     /**
@@ -22,10 +24,11 @@ public class Pizza1 {
         pizza p1 = new pizza();
     
             p1.order();
-
+                p1.payment();
     }
     
 }
+
 
 class pizza
 {
@@ -86,10 +89,11 @@ class pizza
          }
      }
 
+     
     void pizza_details() 
     {
 	  // Prompts for pizza size
-	     System.out.print("\nWhat size of pizza would you like (diameter in inches)? (10,   12, 14, or 16) " );
+	     System.out.print("\nWhat size of pizza would you like (diameter in inches)? (10,   12, 14, or 16): " );
 	     if(keyboard.hasNextInt())
 	    	 inches = keyboard.nextInt();
   
@@ -119,6 +123,7 @@ class pizza
                pizza_crust();
 	  
 }	
+    
 
 void pizza_crust()
 {
@@ -146,6 +151,7 @@ void pizza_crust()
 	         
 	   pizza_toppings();
 }
+
 
 void pizza_toppings()
 {
@@ -187,10 +193,8 @@ void pizza_toppings()
 	     lastTotal = total * ( 1 + taxRate );
         
 }
-             
-  
+            
 
-    
     void order()
   {
 
@@ -203,4 +207,18 @@ void pizza_toppings()
                 delivery_charge();
 		pizza_details();	
     }
+    
+    void payment()
+  {
+	     // Payment Confirmation
+	     System.out.println(firstName + ", here is your order:"); 
+	     System.out.println(inches + " inch pizza");
+	     System.out.println(crust +", " + toppings);
+	     System.out.println("Order Cost: Rs " + df.format(total));
+	     System.out.println("Tax\nSGST: Rs " + (df.format(tax/2)));
+	     System.out.println("CGST: Rs " + (df.format(tax/2)));
+	     System.out.println("Total Rs " + (df.format(tax)));
+	     System.out.println("Total Due: Rs " + df.format(lastTotal));
+  }
+ 
 }
