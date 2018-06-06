@@ -117,7 +117,39 @@ class pizza
 	     keyboard.nextLine();
 
                pizza_crust();
-	     // Prompts user for additonal toppings
+	  
+}	
+
+void pizza_crust()
+{
+        // Prompts user for type of crust
+	     System.out.print("\nWhat type of crust do you want? (H)Hand-Tossed, (T)Thin-crust, or (D)Deep-dish (enter H, T, or D,): " );
+	     crustType = keyboard.nextLine().charAt(0);
+
+	     if (crustType == 'H' || crustType == 'h' )
+	     {
+	         crust = "Hand-Tossed";
+	     }
+	     else if (crustType == 'T' || crustType == 't' )
+	     {
+	         crust = "Thin-Crust";
+	     }
+	     else if (crustType == 'D' || crustType == 'd' )
+	     {
+	         crust = "Deep-Dish";
+	     }
+	     else if (crustType != 'H' && crustType != 'h' && crustType != 'T' && crustType    != 't' && crustType != 'D' && crustType != 'd' )
+	     {
+	         System.out.println("The crust type you have entered is illegal, your crust type will be set to hand-tossed. " );
+	     }
+	         crust = "Hand-Tossed";
+	         
+	   pizza_toppings();
+}
+
+void pizza_toppings()
+{
+    // Prompts user for additonal toppings
 	     System.out.println("All pizzas come with cheese." );
 	     System.out.println("\nAdditional toppings are Rs 80 each, choose from Pepperoni or Sausage." );
 
@@ -154,35 +186,7 @@ class pizza
 	     tax = total * taxRate;
 	     lastTotal = total * ( 1 + taxRate );
         
-}	
-
-void pizza_crust()
-{
-        // Prompts user for type of crust
-	     System.out.print("\nWhat type of crust do you want? (H)Hand-Tossed, (T)Thin-crust, or (D)Deep-dish (enter H, T, or D,): " );
-	     crustType = keyboard.nextLine().charAt(0);
-
-	     if (crustType == 'H' || crustType == 'h' )
-	     {
-	         crust = "Hand-Tossed";
-	     }
-	     else if (crustType == 'T' || crustType == 't' )
-	     {
-	         crust = "Thin-Crust";
-	     }
-	     else if (crustType == 'D' || crustType == 'd' )
-	     {
-	         crust = "Deep-Dish";
-	     }
-	     else if (crustType != 'H' && crustType != 'h' && crustType != 'T' && crustType    != 't' && crustType != 'D' && crustType != 'd' )
-	     {
-	         System.out.println("The crust type you have entered is illegal, your crust type will be set to hand-tossed. " );
-	     }
-	         crust = "Hand-Tossed";
-	         
-	   
 }
-             
              
   
 
