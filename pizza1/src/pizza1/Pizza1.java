@@ -36,7 +36,18 @@ class pizza
     DecimalFormat df = new DecimalFormat("#.##");
     int inches=0; // pizza size
     double cost = 0.0; // pizza cost
- 
+    char crustType; 
+    String crust; // name of crust
+    final double taxRate = 0.08; // amount tax owed
+     double tax; // tax amount
+     double total; // total of pizza + toppings
+     double lastTotal; // total of everything
+     int numberOfToppings = 0;
+     int numberOfToppings2 =0;
+     int numberOfToppings3;
+     String toppings = "Cheese";
+     
+     
     Scanner keyboard = new Scanner(System.in);
     
      void delivery_charge() 
@@ -104,6 +115,68 @@ class pizza
 	         cost = 200;
 	     }
 	     keyboard.nextLine();
+
+    // Prompts user for type of crust
+	     System.out.print("\nWhat type of crust do you want? (H)Hand-Tossed, (T)Thin-crust, or (D)Deep-dish (enter H, T, or D,): " );
+	     crustType = keyboard.nextLine().charAt(0);
+
+	     if (crustType == 'H' || crustType == 'h' )
+	     {
+	         crust = "Hand-Tossed";
+	     }
+	     else if (crustType == 'T' || crustType == 't' )
+	     {
+	         crust = "Thin-Crust";
+	     }
+	     else if (crustType == 'D' || crustType == 'd' )
+	     {
+	         crust = "Deep-Dish";
+	     }
+	     else if (crustType != 'H' && crustType != 'h' && crustType != 'T' && crustType    != 't' && crustType != 'D' && crustType != 'd' )
+	     {
+	         System.out.println("The crust type you have entered is illegal, your crust type will be set to hand-tossed. " );
+	     }
+	         crust = "Hand-Tossed";
+	         
+	    
+   
+	     // Prompts user for additonal toppings
+	     System.out.println("All pizzas come with cheese." );
+	     System.out.println("\nAdditional toppings are Rs 80 each, choose from Pepperoni or Sausage." );
+
+             // Pepperoni
+	     System.out.println("\nDo you want Pepperoni? (Y/N)" );
+	     numberOfToppings = keyboard.nextLine().charAt(0);
+	     if (numberOfToppings == 'Y' || numberOfToppings == 'y' )
+	     {
+	         numberOfToppings = 1;
+	         toppings = toppings + " and Pepperoni";
+	     }
+	     else
+	     {
+	         numberOfToppings = 0;
+	     }
+
+             //Sausage
+	     System.out.println("\nDo you want Sausage? (Y/N)" );
+	     numberOfToppings2 = keyboard.nextLine().charAt(0);
+	     if (numberOfToppings2 == 'Y' || numberOfToppings2 == 'y' )
+	     {
+	         numberOfToppings2 = 1;
+	         toppings = toppings + " and Sausage";
+	     }
+	     else
+	     {
+	         numberOfToppings2 = 0;
+	     } 
+
+	     numberOfToppings3 = (numberOfToppings) + (numberOfToppings2);
+
+	     // Calculations
+	     total = (cost) + (numberOfToppings3 * 1.25) + (deliveryfee);
+	     tax = total * taxRate;
+	     lastTotal = total * ( 1 + taxRate );
+        
 }	
 
              
