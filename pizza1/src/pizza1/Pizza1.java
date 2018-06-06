@@ -1,47 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package pizza1;
+package Pizza1;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-/**
- *
- * @author LENOVO
- */
-
 /*Java Class*/
-public class Pizza1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) 
+ class Pizzatest
+ {
+     
+    public static void main(String[] args)
     {
-        pizza p1 = new pizza();
-    
-            p1.order();
-                p1.payment();
+    	pizza p1 = new pizza();
+
+    	try 
+    	{
+    		p1.order();
+			p1.payment();
+		} 
+    	catch (InterruptedException e) 
+    	{
+			e.printStackTrace();
+		}
+    	
     }
     
-}
-
-
-class pizza
-{
-    //Variables
-    String firstName; // first name of user
-    double distance = 0;
-    double deliveryfee = 0;
-    DecimalFormat df = new DecimalFormat("#.##");
-    int inches=0; // pizza size
-    double cost = 0.0; // pizza cost
-    char crustType; 
-    String crust; // name of crust
-    final double taxRate = 0.08; // amount tax owed
+ }
+ 
+ class pizza
+ {
+	//  Variables
+     String firstName; // first name of user
+     char crustType; 
+     String crust; // name of crust
+     int inches=0; // pizza size
+     double cost = 0.0; // pizza cost
+     final double taxRate = 0.08; // amount tax owed
      double tax; // tax amount
      double total; // total of pizza + toppings
      double lastTotal; // total of everything
@@ -49,11 +41,12 @@ class pizza
      int numberOfToppings2 =0;
      int numberOfToppings3;
      String toppings = "Cheese";
+     double distance = 0;
+     double deliveryfee = 0;
+     DecimalFormat df = new DecimalFormat("#.##");
+     Scanner keyboard = new Scanner(System.in);
      
-     
-    Scanner keyboard = new Scanner(System.in);
-    
-     void delivery_charge() 
+     void delivery_charge() throws InterruptedException
      {
     	 System.out.print("\nPlease enter total distance in miles from pizza shop (0 for in store pickup):");
 
@@ -69,9 +62,9 @@ class pizza
          	keyboard.nextLine();
          }
     	 
-    	 
+    	 Thread.sleep(500);
          System.out.println("Checking for delivery charges......... : \n");
-         
+         Thread.sleep(500);
          if (distance == 0)
          {
          deliveryfee = 0;
@@ -88,12 +81,37 @@ class pizza
          System.out.println("Your delivery fee is: Rs " + df.format(deliveryfee));
          }
      }
-
      
-    void pizza_details() 
-    {
+  void order()
+  {
+
+
+	  	// Prompts for name & determines discount
+	  	System.out.print("Enter your name: " );
+	  	firstName = keyboard.nextLine();
+
+     	
+		try 
+		{
+			//Prompt for distance to calculate delivery charge
+			delivery_charge();
+			
+			//Type of Pizza need
+			pizza_details();
+		} 
+		catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+		}
+
+    
+
+  }
+  
+  void pizza_details() throws InterruptedException
+  {
 	  // Prompts for pizza size
-	     System.out.print("\nWhat size of pizza would you like (diameter in inches)? (10,   12, 14, or 16): " );
+	     System.out.print("\nWhat size of pizza would you like (diameter in inches)? (10,   12, 14, or 16) " );
 	     if(keyboard.hasNextInt())
 	    	 inches = keyboard.nextInt();
   
@@ -115,18 +133,20 @@ class pizza
 	     }
 	     else if (inches != 10 && inches != 12 && inches != 14 && inches != 16)
 	     {
-    	         System.out.println("\nThe number you have entered is illegal, your pizza size will be set to 12 inches. " );
+	    	 Thread.sleep(500);
+	         System.out.println("\nThe number you have entered is illegal, your pizza size will be set to 12 inches. " );
 	         cost = 200;
 	     }
 	     keyboard.nextLine();
-
-               pizza_crust();
-	  
-}	
-    
-
-void pizza_crust()
-{
+	
+             pizzacrust();
+             
+  }
+  
+  
+  
+  void pizzacrust() throws InterruptedException
+  {
         // Prompts user for type of crust
 	     System.out.print("\nWhat type of crust do you want? (H)Hand-Tossed, (T)Thin-crust, or (D)Deep-dish (enter H, T, or D,): " );
 	     crustType = keyboard.nextLine().charAt(0);
@@ -145,21 +165,24 @@ void pizza_crust()
 	     }
 	     else if (crustType != 'H' && crustType != 'h' && crustType != 'T' && crustType    != 't' && crustType != 'D' && crustType != 'd' )
 	     {
+	    	 Thread.sleep(500);
 	         System.out.println("The crust type you have entered is illegal, your crust type will be set to hand-tossed. " );
 	     }
 	         crust = "Hand-Tossed";
-	         
-	   pizza_toppings();
-}
-
-
-void pizza_toppings()
-{
-    // Prompts user for additonal toppings
+               
+                pizza_toppings();
+	    
+  }
+  
+  void pizza_toppings() throws InterruptedException
+  {
+                   Thread.sleep(500);
+	     // Prompts user for additonal toppings
 	     System.out.println("All pizzas come with cheese." );
 	     System.out.println("\nAdditional toppings are Rs 80 each, choose from Pepperoni or Sausage." );
 
-             // Pepperoni
+	     Thread.sleep(500);
+	     // Pepperoni
 	     System.out.println("\nDo you want Pepperoni? (Y/N)" );
 	     numberOfToppings = keyboard.nextLine().charAt(0);
 	     if (numberOfToppings == 'Y' || numberOfToppings == 'y' )
@@ -172,7 +195,8 @@ void pizza_toppings()
 	         numberOfToppings = 0;
 	     }
 
-             //Sausage
+	     Thread.sleep(500);
+	     //Sausage
 	     System.out.println("\nDo you want Sausage? (Y/N)" );
 	     numberOfToppings2 = keyboard.nextLine().charAt(0);
 	     if (numberOfToppings2 == 'Y' || numberOfToppings2 == 'y' )
@@ -191,34 +215,23 @@ void pizza_toppings()
 	     total = (cost) + (numberOfToppings3 * 1.25) + (deliveryfee);
 	     tax = total * taxRate;
 	     lastTotal = total * ( 1 + taxRate );
-        
-}
+             Thread.sleep(500);
             
 
-    void order()
-  {
-
-
-	  	// Prompts for name & determines discount
-	  	System.out.print("Enter your name: " );
-	  	firstName = keyboard.nextLine();
-
-                //Prompt for distance to calculate delivery charge
-                delivery_charge();
-		pizza_details();	
-    }
-    
-    void payment()
+  }
+  void payment() throws InterruptedException
   {
 	     // Payment Confirmation
 	     System.out.println(firstName + ", here is your order:"); 
 	     System.out.println(inches + " inch pizza");
 	     System.out.println(crust +", " + toppings);
+	     Thread.sleep(500);
 	     System.out.println("Order Cost: Rs " + df.format(total));
+	     Thread.sleep(500);
 	     System.out.println("Tax\nSGST: Rs " + (df.format(tax/2)));
 	     System.out.println("CGST: Rs " + (df.format(tax/2)));
 	     System.out.println("Total Rs " + (df.format(tax)));
 	     System.out.println("Total Due: Rs " + df.format(lastTotal));
   }
  
-}
+ }
