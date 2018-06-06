@@ -48,7 +48,7 @@ import java.util.Scanner;
      
      void delivery_charge() throws InterruptedException
      {
-    	 System.out.print("\nPlease enter total distance in miles from pizza shop (0 for in store pickup):");
+    	 System.out.print("\nPlease enter total distance in kilometers from pizza shop (0 for in store pickup):");
 
          while(true)
          {
